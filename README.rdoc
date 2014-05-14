@@ -1,0 +1,5 @@
+= WikiPku
+
+Wiki for PKU
+
+This project rocks and uses MIT-LICENSE.
