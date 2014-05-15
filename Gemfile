@@ -12,3 +12,13 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+gem 'rails_admin', '~> 0.6.2'
+gem 'rails_admin_state', '~> 1.3.3'
+gem 'baidu_ueditor_rails', '~> 0.1.0'
+gem 'state_machine', '~> 1.2.0'
+gem 'devise', '~> 3.2.4'
+gem 'rails_admin_nestable', '~> 0.1.7'
+gem 'ancestry', '~> 2.1.0'
+gem 'cancan', '~> 1.6.10'
+gem "sass-rails", "~> 4.0.3"
