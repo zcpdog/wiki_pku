@@ -1,0 +1,15 @@
+<%entries.each do |entry|%>
+	<dl class="col-dl">
+		<dt class="h2"><%=link_to entry.name, entry_path(entry)%></dt>
+		<dd class="gray">词条创建者:<%=link_to entry.user.username, user_path(entry.user)%> 创建时间:<label><%=entry.created_at%></label></dd>
+		<dd><span class="bold">标签:</span>
+			<%entry.tags.each do |tag|%>
+	  		  <%=link_to tag.name, tag_path(tag)%>
+			<%end%>
+			<a href="index.php?search-tag-" ></a>
+		</dd>
+		<dd><p><span class="bold">摘要:</span><%=entry.abstract%><%=link_to "[阅读全文]", entry_path(entry)%></p></dd>
+		<dd class="gray">编辑:<label><%=entry.edit_times%>次</label>|浏览:<label><%=entry.show_times%>次</label>
+		</dd>
+	</dl>
+<%end%>

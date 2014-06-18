@@ -22,3 +22,9 @@ gem 'rails_admin_nestable', '~> 0.1.7'
 gem 'ancestry', '~> 2.1.0'
 gem 'cancan', '~> 1.6.10'
 gem "sass-rails", "~> 4.0.3"
+gem "jquery-rails"
+gem "carrierwave", "~> 0.10.0"
+gem "mini_magick", "~> 3.6.0"
+gem "mysql2"
+gem "kaminari", "~> 0.15"
+gem "simple_form", "~> 3.0.1"

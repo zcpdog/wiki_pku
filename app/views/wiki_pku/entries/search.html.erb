@@ -1,0 +1,9 @@
+<div class="l w-710 o-v p-b10 resoult_list">
+	<div id="map" class="hd_map bor_no">
+		<%=link_to "北京大学地球科学国家级实验教学示范中心", wiki_pku.root_path%> &gt;&gt; 搜索 &gt;&gt; <%=@key_words%>
+	</div>
+	<%=render partial: "wiki_pku/entries/items", locals: {entries: @entries}%>
+	<div id="fenye" class="m-t10 a-r">
+		<%=paginate @entries%>
+	</div>
+</div>

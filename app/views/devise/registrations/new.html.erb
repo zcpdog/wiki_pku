@@ -1,10 +1,10 @@
-<h2>Sign up</h2>
+<!-- <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name, autofocus: true %></div>
+  <div><%= f.label :username %><br />
+  <%= f.text_field :username, autofocus: true %></div>
   
   <div><%= f.label :email %><br />
   <%= f.email_field :email%></div>
@@ -18,4 +18,50 @@
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %> -->
+
+
+<div class="register">
+	<div class="r reg-r">
+	<div class="login-static reg_main">
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => 'registerform'}) do |f| %>
+		<h2 class="h3 a-r">如已注册，请<%=link_to "登录", wiki_pku.new_user_session_path, target: "_blank", class: "m-l8"%></h2>
+		<ul class="col-ul">
+			<li><span>用户名：</span>
+				<%= f.text_field :username,maxlength: "15", class: "inp_txt" ,autofocus: true,tabindex: "1" %>
+				<label id="checkusername">用户名长度最少3位，最多15位!</label>
+			</li>
+			<li><span>密码：</span>	
+				<%= f.password_field :password, autocomplete: "off", tabindex: "2", class: "inp_txt" ,maxlength: "32"%>
+				<label id="checkpasswd">*密码不能为空，最多32位!</label>
+			</li>
+			<li><span>确认密码：</span>
+				<%= f.password_field :password, autocomplete: "off", tabindex: "3", class: "inp_txt" ,maxlength: "32"%>
+				<label id="checkrepasswd"></label>
+			</li>
+			<li><span>E-mail：</span>
+				<%= f.text_field :email, tabindex: "4", class: "inp_txt", onblur: "check_email()" ,maxlength: "50"%>
+				<label id="checkemail">*填写保密邮箱，通行安全保障</label></li>
+						
+						<li><input name="agree" id="agree" type="checkbox"  checked="checked" />我已看过并同意"<a href="#" target="_blank">本站服务条款</a>" <label id="chkagree">&nbsp;</label>
+			</li>
+			<li>
+				<input type="hidden" id="fromuid" name="fromuid" value="">
+				<input name="submit" tabindex="8" type="submit" value="提交" class="btn_inp" />
+			</li>
+		</ul>
+	<% end %>
+	</div>
+	</div>
+<dl class="col-dl">
+<dt><%=image_tag "wiki_pku/reg_01.gif"%></dt>
+<dd>在这里您可以得到其他朋友共享的知识，也可以把你的知识贡献给其他需要帮助的朋友们！</dd>
+</dl>
+<dl class="col-dl">
+<dt><%=image_tag "wiki_pku/reg_02.gif"%></dt>
+<dd>这里不仅能让你创建自己想创建的词条，还可以通过编辑更多词条认识和帮助更多的朋友。</dd>
+</dl>
+</div>
+<script type="text/javascript"> 
+$('#username').focus();
+</script>

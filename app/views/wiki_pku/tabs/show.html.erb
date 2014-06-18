@@ -1,0 +1,10 @@
+<div class="hd_map"> <%=link_to "北京大学地球科学国家级实验教学示范中心", wiki_pku.root_path%>
+	&gt;&gt; 
+ 野外实习 </div>
+<div class="r w-710 o-v columns p-b10 cate_show">
+	<h2 class="col-h2 h3 a-r"><strong class="l h2">"<%=@tab.name%>" 分类下的词条</strong>该分类下有<%=@tab.category.entries.size%>个词条
+	</h2>
+			<%=render partial: "wiki_pku/entries/items", locals: {entries: @entries}%>
+			<div id="fenye" class="m-t10"></div>
+</div>
+<%=render partial: "wiki_pku/tabs/common/left_sidebar", locals: {tab: @tab}%>

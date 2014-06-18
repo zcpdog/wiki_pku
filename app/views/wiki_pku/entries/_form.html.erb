@@ -1,0 +1,22 @@
+  <h2 class="col-p">创建词条</h2>
+  词条分类：
+   <div class="col-p">
+	   <%=f.association :categories, as: :check_boxes, class: "reg-inp"%>
+	</div>
+  词条名称：
+   <div class="col-p">
+	   <%=f.text_area :name, class: "reg-inp", cols: 100, rows: 1%>
+	</div>
+  词条内容：
+   <div class="col-p">
+	   <%=f.text_area :content, class: "reg-inp"%>
+	</div>
+  词条摘要：
+   <div class="col-p">
+	   <%=f.text_area :abstract, class: "reg-inp", cols: 100, rows: 3%>
+   </div>
+  词条标签：
+   <div class="col-p">
+	   <%=f.text_area :tag_text, class: "reg-inp", cols: 100, rows: 1%><br>
+	   <span class="gray">[多个标签使用半角分号"; ；"隔开]</span>
+   </div>

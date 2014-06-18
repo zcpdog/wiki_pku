@@ -1,0 +1,40 @@
+<%if tab.category.descendants.at_depth(2).any?%>
+<div class="l w-230">
+	<div class="columns category p-b10">
+	<h2 class="col-h2"><%=tab.category.name%></h2>
+	<%tab.category.descendants.at_depth(1).each do |cat_d1|%>
+		<dl class="i6-ff">
+			<dt><%=link_to cat_d1.name, category_path(cat_d1)%></dt>
+			<%if cat_d1.has_children?%>
+				<%cat_d1.children.each do |cat_d2|%>
+					<dd><%=link_to cat_d2.name, category_path(cat_d2)%></dd>
+				<%end%>
+			<%end%>
+		</dl>
+	<%end%>
+	</div>
+	<div id="block_left"></div>
+</div>
+<%elsif tab.category.descendants.at_depth(1).any?%>
+<div class="l w-230">
+	<div class="p-b10 m-t10 sidebar">
+		<ul>
+			<%tab.category.children.each do |cat|%>
+				<li><%=link_to cat.name, category_path(cat)%>></li>
+			<%end%>
+		</ul>
+	</div>
+    <div id="block_left"></div>
+</div>
+<%else%>
+<div class="l w-230">
+	<div class="p-b10 m-t10 sidebar">
+		<ul>
+			<li>
+				<%=link_to tab.category.name, category_path(tab.category)%>
+			</li>
+		</ul>
+	</div>
+    <div id="block_left"></div>
+</div>
+<%end%>

@@ -1,0 +1,19 @@
+<div class="hd_map">
+	<%=link_to "北京大学地球科学国家级实验教学示范中心", wiki_pku.root_path%>
+		&gt;&gt; 
+	 个人资料
+</div>
+	
+<div class="r w-710 o-v m-t10 p-b10 gl_manage_main">
+	<h2 class="h3 bold">个人资料</h2>
+	<dl class="col-dl gr_info font-14 ">
+	<dd>
+		<%=link_to image_tag("wiki_pku/user.jpg"), "javascript:void(0);", class: "a-img2 l"%>
+	</dd>
+	<dd>用户名: <%=current_user.username%></dd>
+	<dd>头衔: <font color="">超级管理员</font></dd>
+	<dd>注册时间: <span class="gray"><%=current_user.created_at%></span></dd>
+	<dd>最后登录时间: <span class="gray"><%=current_user.last_sign_in_at%></span></dd>
+	</dl>
+</div>
+<%=render "wiki_pku/users/common/left_sidebar"%>

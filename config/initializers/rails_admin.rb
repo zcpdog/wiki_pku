@@ -1,5 +1,5 @@
 RailsAdmin.config do |config|
-
+  config.main_app_name = ["北京大学地球科学国家级实验教学示范中心", "后台管理"]
   ### Popular gems integration
 
   ## == Devise ==

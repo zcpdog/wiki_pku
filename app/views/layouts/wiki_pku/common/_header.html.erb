@@ -3,33 +3,29 @@
 </div>
 
 <ul id="login" class="w-950 bor_b-ccc"> 
-	<li class="bor_no pad10">欢迎你，<a href="index.php?user-space-11">guoyanjun</a></li>
-		<li><a href="
-			index.php?pms
-		" id="header-pms">
-		<%=image_tag "wiki_pku/shine.gif"%>
-	</a></li>
-	<li><a  href="index.php?user-profile">个人管理</a></li>
-	<li><a href="index.php?admin_main" target="_blank">系统设置</a></li>	<li class="bor_no"><a href="index.php?user-logout" >退出</a></li>
-	<li class="bor_no help"><a href="index.php?doc-innerlink-%E5%B8%AE%E5%8A%A9">帮助</a></li>
+	<%if user_signed_in?%>
+		<li class="bor_no pad10">欢迎你，<%=link_to current_user.username, wiki_pku.user_path(current_user)%></li>
+		<li></li>
+		<li><%=link_to "个人管理", wiki_pku.profile_user_path(current_user)%></li>
+		<li><%=link_to "系统设置", rails_admin.dashboard_path, target: "_blank"%></li>
+		<li class="bor_no"><%=link_to("退出", wiki_pku.destroy_user_session_path, method: :delete)%></li>
+	<%else%>
+		<li name="login"><%=link_to "登录", wiki_pku.new_user_session_path%></li>
+		<li name="register" class="bor_no"><%=link_to "注册", wiki_pku.new_user_registration_path%></li>
+	<%end%>
 </ul>
 <div id="header">
-	<a href="http://earthlab.pku.edu.cn/lab" id="logo"><%=image_tag "wiki_pku/logo.gif", width: 220%></a>
-	
+	<%=link_to image_tag("wiki_pku/logo.gif", width: 220), wiki_pku.root_path, id: "logo"%>
 	<p id="search">
 	<div class="topl">
-	</div>
-								<form name="searchform" method="post" action="index.php?search-kw">
+</div>
+<%= form_tag(wiki_pku.search_path, method: "get", class: "search_form") do %>
 	<p id="search">
-		<input name="searchtext" class="btn_txt" maxlength="80" size="42" value="" type="text"/>
-	<input name="default" value="进入词条" tabindex="2" class="btn_inp enter_doc" onclick="document.searchform.action='index.php?search-default';document.searchform.submit();" type="button"/>
-	<input name="full" value="1" tabindex="1"   type="hidden"/>
-	<input name="search" value="搜 索" tabindex="1" class="btn_inp sea_doc" type="submit"/>
-	<a href="index.php?search-fulltext" class="sea_advanced link_black">高级搜索</a>
+	<input name="q" class="btn_txt" maxlength="80" size="42" value="" type="text"/>
+	<input tabindex="2" class="btn_inp enter_doc" type="submit"/>
 		
-	<label>热门搜索：</label>
 	</p>
-	</form>
-			
-	<div class="topr">
-	</div>
+<% end %>
+	
+<div class="topr">
+</div>

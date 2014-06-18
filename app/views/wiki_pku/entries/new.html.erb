@@ -1,0 +1,30 @@
+<%= simple_form_for @entry do |f| %>
+<div id="map" class="hd_map bor_no"><%=link_to "北京大学地球科学国家级实验教学示范中心", wiki_pku.root_path%> &gt;&gt; 创建词条</div>
+<div class="l w-710">
+  <div class="p-10 columns cre_main">
+      	<%=render  partial: "form", locals: {f: f}%>
+        <ul class="ul_l_s" >
+          <li>
+			  <%= f.submit "创建词条" %>
+		  </li>
+	  </ul>
+		
+  </div>
+  <div id="block_left"></div>
+</div>
+<% end %>
+<div class="r w-230">
+  <div class="columns cre_r">
+    <h3 class="bold">词条标准规范:</h3>
+    <ul class="col-ul">
+      <li>不可以是带修饰词的陈述性词语</li>
+      <li>不可以是短语或句子</li>
+      <li>不可以是讨论的话题</li>
+      <li>不可以含有特殊符号和空格</li>
+      <li>不可以含有错别字</li>
+      <li>英译词必须是全称</li>
+      <li>新闻类、技巧类文章不能做为百科词条</li>
+    </ul>
+  </div>
+  <div id="block_right"></div>
+</div>

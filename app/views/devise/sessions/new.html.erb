@@ -1,17 +1,48 @@
-<h2>Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<script type="text/javascript">
+var indexlogin = 0;
+var loginTip1 = '用户名不能为空!';
+var loginTip2 = '用户名长度最少3位，最多15位!';
+var loginTip3 = '用户不存在!';
+var name_max_length = 15;
+var name_min_length = 3;
+var editPassTip1 = '密码不能为空，最多32位!';
+var loginTip4 = '不匹配!';
+var checkcode = '1';
+$(function() {$('#username').focus();});
+</script> 
+<div class="register">
+	<div class="r reg-r">
+	<div class="login-static reg_main">
+	<h2 class="h3 a-r">
+		您尚未注册账号请<%=link_to "注册", wiki_pku.new_user_registration_path,target: "_blank", class: "m-l8"%>
+	</h2>
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	<form name="box-login" action="index.php?user-login" method="post" onsubmit="return docheck();">
+	<ul class="col-ul">
+		<li>
+			<span>用户名：</span>	
+			<%= f.text_field :login, autofocus: true, class: "inp_txt" %>
+			<label id="checkusername">用户名长度最少3位，最多15位!</label>
+		</li>
+		<li>
+			<span>密码：</span>	
+			<%= f.password_field :password, autocomplete: "off", class: "inp_txt" %>
+			<label id="checkpassword">*字母区分大小写，最多32位。</label>
+		</li>
+		<li>
+			<%= f.submit "登录" %>
+		</li>
+	</ul>
+	<% end %>
+	</div>
+	</div>
+<dl class="col-dl">
+<dt><%=image_tag "wiki_pku/reg_01.gif"%></dt>
+<dd>在这里您可以得到其他朋友共享的知识，也可以把你的知识贡献给其他需要帮助的朋友们！</dd>
+</dl>
+<dl class="col-dl">
+<dt><%=image_tag "wiki_pku/reg_02.gif"%></dt>
+<dd>这里不仅能让你创建自己想创建的词条，还可以通过编辑更多词条认识和帮助更多的朋友。</dd>
+</dl>
+</div>

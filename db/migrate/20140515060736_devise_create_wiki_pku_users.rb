@@ -2,7 +2,7 @@ class DeviseCreateWikiPkuUsers < ActiveRecord::Migration
   def change
     create_table(:wiki_pku_users) do |t|
       ## Database authenticatable
-      t.string :name,               null: false, default: ""
+      t.string :username,           null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
@@ -38,7 +38,7 @@ class DeviseCreateWikiPkuUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :wiki_pku_users, :name,                 unique: true
+    add_index :wiki_pku_users, :username,                 unique: true
     add_index :wiki_pku_users, :email,                unique: true
     # add_index :wiki_pku_users, :reset_password_token, unique: true
     # add_index :wiki_pku_users, :confirmation_token,   unique: true

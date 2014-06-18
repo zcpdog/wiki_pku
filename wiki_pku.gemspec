@@ -26,6 +26,12 @@ Gem::Specification.new do |s|
   s.add_dependency 'ancestry', '~> 2.1.0'
   s.add_dependency 'cancan', '~> 1.6.10'
   s.add_dependency "sass-rails", "~> 4.0.3"
-
+  s.add_dependency "jquery-rails"
+  s.add_dependency "mysql2"
+  s.add_dependency "carrierwave", "~> 0.10.0"
+  s.add_dependency "mini_magick", "~> 3.6.0"
+  s.add_dependency "kaminari", "~> 0.15"
+  s.add_dependency "simple_form", "~> 3.0.1"
+  
   s.add_development_dependency "sqlite3"
 end

@@ -1,0 +1,26 @@
+<div class="hd_map">
+	<%=link_to "北京大学地球科学国家级实验教学示范中心", wiki_pku.root_path%>&gt;&gt;<%=@user.username%>	创建的词条 
+</div>
+
+<div class="r w-710 o-v p-b10 columns qh gr">
+	<h2 class="col-h2 h3 a-r">
+		<a href="#" class="l font14 on">创建的词条</a>
+	</h2>
+	<%=render partial: "wiki_pku/entries/items", locals: {entries: @entries}%>
+	<div id="fenye" class="m-t10 a-r">
+		<%=paginate @entries%>
+	</div>
+</div>
+
+<div class="l w-230">
+	<div class="columns gr_info p-b10">
+		<h2 class="col-h2"><%=@user.username%></h2>	
+		<dl class="col-dl">
+		<dd><%=link_to(user_avatar @user, wiki_pku.user_path(@user))%></dd>
+		<dd class="h2"><font color="">超级管理员</font></dd>
+		<dd>创建词条:<span class="gray"><%=@user.entries.size%></span></dd>
+		<dd>注册时间:<span class="gray"><%=@user.created_at%></span></dd>
+	</dl>
+	</div>
+</div>
+

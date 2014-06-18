@@ -1,0 +1,112 @@
+<div class="w-950 hd_map"> <a href="http://earthlab.pku.edu.cn/lab">北京大学地球科学国家级实验教学示范中心</a> &gt;&gt;所属分类 &gt;&gt;<span id="catenavi">
+    <a href="index.php?category-view-31">岩石 </a>&nbsp;&nbsp;
+    </span> </div>
+<div class="l w-710 o-v">
+  <h1 class="title_thema"> <span id='doctitle'><%=@entry.name%></span>
+    <label id='auditmsg'>
+          </label>
+    <label id='lockimage'>
+          </label>
+  </h1>
+  <div class="subordinate">
+    <p class="cate_open"> 
+	  	  <span class="bold">标签:</span>
+		  <%@entry.tags.each do |tag|%>
+		  	<%=link_to tag.name, tag_path(tag)%>
+		  <%end%>
+          <span class="w-110" onclick="Tag.box(585,this)"><%=link_to "编辑/添加标签", edit_entry_path(@entry)%></span>
+          <span class="w-110" onclick="Letter.box(585,this)">
+      		<input type='hidden' id='fletter' value='h'>
+      	</span>
+      	      </p>
+	    <span class="editteam"> 
+		<a href="#">发表评论(<%=@entry.comments.size%>)</a> <%=link_to "编辑词条", edit_entry_path(@entry), class: "edit_ct"%>
+    <label class="share_btn" id="share_btn" style="display:none">
+      <input id="sitename" name="sitename" value="北京大学地球科学国家级实验教学示范中心" type="hidden">
+      <input id="firstimg" name="firstimg" value="" type="hidden">     
+    </span>
+	</div>
+<div class="nav_model">
+  </div>
+        <div class="content_1 wordcut">
+            <div class="content_topp"> 
+				<%=@entry.content.html_safe%>
+			</div>
+          </div>
+  <div class="nav_model">
+    </div>
+          
+  <iframe name="upload" id="upload" style="display:none;" ></iframe>
+    <input type="hidden" name="coin_hidden" id="coin_hidden" value="196"  />
+<div class="bor_b-ccc m-t10 notes">
+  <p class="l">→如果您认为本词条还有待完善，请 <%=link_to "编辑词条", edit_entry_path(@entry)%></p>
+</div>
+
+<div class="columns comment">
+  <h2 class="col-h2">发表评论</h2>
+	<%if user_signed_in?%>
+		<%= form_for([@entry,WikiPku::Comment.new], html: {id: "cmtfm"}) do |f| %>
+		    <ul class="col-ul">
+		      <li>
+	        	<%=f.text_area :content, class: "area", cols: "95", rows: "10", autocomplete: "off" %>
+		      <li class="yzm">
+		                &nbsp;&nbsp;&nbsp;&nbsp;注:评论长度最大为200个字符。</li>
+		      <li>
+		        <input name="submit" type="submit" value="发表评论" class="btn_inp"/>
+		      </li>
+		    </ul>
+		<%end%>
+	<%else%>
+		<div class="alert">评论前，请  <%=link_to t('sign_in'), polymorphic_path([:login, :user, commentable, :comments])%></div>
+	<%end%>
+</div>
+<div id="c_content">
+	<span id="page" style="display:none">0</span>
+	<%@entry.comments.each do |comment|%>
+		<div class="columns" id="li_1">
+			<span class="col-h2" id="u_3">
+				<%=link_to comment.user.username, user_path(comment.user)%>
+			</span>
+			<span class="more gray">时间：
+				<span class="gray"><%=comment.created_at%></span>
+			</span>
+			<div class="com_content">
+			<p class="m-t10" id="c_3"><%=comment.content%></p>
+			</div>
+		</div>
+	<%end%>
+</div>	
+</div>
+
+<div class="r w-230">
+<div class="nav_model">
+  </div>
+      <div class="columns ctgl">
+    <h2 class="col-h2">词条管理</h2>
+    <form method="post">
+      <dl>
+        <dt>操作</dt>
+        <dd class="a-c">
+          <input name="Button2" type="button" value="重命名" class="m-lr8 btn_inp" onclick="doc_rename();" />
+          <input id="editcategory" name="Button3" type="button" value="编辑分类" class="m-lr8 btn_inp" onClick="javascript:catevalue.ajax(0,this);"/>
+        </dd>
+      </dl>
+    </form>
+  </div>
+    <div class="columns ctxx">
+    <h2 class="col-h2">词条信息</h2>
+            <dl class="col-dl twhp2">
+      <dd><%=link_to user_avatar(@entry.user), wiki_pku.user_path(@entry.user)%></dd>
+      <dt><%=link_to @entry.user.username, wiki_pku.user_path(@entry.user)%></dt>
+      <dd><span style="color:" class="l m-r8"><%=@entry.user.role%></span></dd>
+      <dd>词条创建者 </dd>
+    </dl>
+                        <ul class="col-ul bor-ccc">
+      <li>浏览次数: <%=@entry.show_times%> 次</li>
+      <li>更新时间: <%=@entry.updated_at%></li>
+    </ul>
+  </div>
+  <div id="block_right"></div>
+  </div>
+<div class="nav_model">
+</div>

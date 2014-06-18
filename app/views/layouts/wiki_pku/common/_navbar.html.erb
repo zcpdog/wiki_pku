@@ -1,14 +1,12 @@
 <div id="nav" class="w-950 bor_b-ccc">
 	<ul>
-		<li><a href="http://earthlab.pku.edu.cn/lab">首页</a></li>
-		<li><a href="http://earthlab.pku.edu.cn/lab/index.php?category">课程信息</a></li>
-		<li><a href="http://earthlab.pku.edu.cn/lab/index.php?list-recentupdate-30">标本薄片</a></li>
-		<li><a href="http://earthlab.pku.edu.cn/lab/index.php?doc-doclist-2">文档资料</a></li>
-		<li><a href="http://earthlab.pku.edu.cn/lab/index.php?doc-piclist-2">图集百科</a></li>
-		<li><a href="http://earthlab.pku.edu.cn/lab/index.php?video-videolist-2">视频分享</a></li>
-		<li><a href="http://earthlab.pku.edu.cn/lab/index.php?category-view-4">野外实习</a></li>
-		<li><a href="http://earthlab.pku.edu.cn/lab/index.php?category-view-5">活动成果</a></li>
+		<li><%=link_to "首页", wiki_pku.root_path%></li>
+		<%WikiPku::Tab.all.each do |tab|%>
+			<li>
+				<%=link_to tab.name, wiki_pku.tab_path(tab)%>
+			</li>
+		<%end%>
 	</ul>
-		<label><a href="index.php?doc-create">创建词条</a><a href="index.php?doc-sandbox">编辑词条</a></label>
+		<label><%=link_to "创建词条", wiki_pku.new_entry_path%></label>
 	</div>
 </div>
